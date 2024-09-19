@@ -79,6 +79,7 @@ function StatsCard({
 } : {
   formatter: Intl.NumberFormat,
   value: number,
+  // eslint-disable-next-line @typescript-eslint/ban-types
   title: String,
   icon: ReactNode,
 }) {

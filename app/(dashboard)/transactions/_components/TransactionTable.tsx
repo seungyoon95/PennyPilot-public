@@ -30,7 +30,6 @@ import { DataTableFacetedFilter } from '@/components/datatable/FacetedFilters';
 import { DataTableViewOptions } from '@/components/datatable/ColumnToggle';
 import { Button } from '@/components/ui/button';
 import {download, generateCsv, mkConfig} from "export-to-csv";
-import { Description } from '@radix-ui/react-dialog';
 import { DownloadIcon, MoreHorizontal, TrashIcon } from 'lucide-react';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 import DeleteTransactionDialog from './DeleteTransactionDialog';
@@ -42,6 +41,7 @@ interface Props {
 
 type TransactionHistoryRow = GetTransactionHistoryResponseType[0];
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const emptyData:any[] = [];
 
 const columns: ColumnDef<TransactionHistoryRow>[] = [
@@ -146,6 +146,7 @@ function TransactionTable({from, to} : Props) {
         queryFn: () => fetch(`/api/transactions-history?from=${DateToUTCDate(from)}&to=${DateToUTCDate(to)}`).then((res) => res.json()),
     });
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const handleExportCSV = (data: any[]) => {
         const csv = generateCsv(csvConfig)(data);
         download(csvConfig)(csv);

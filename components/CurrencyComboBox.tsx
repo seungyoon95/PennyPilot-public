@@ -52,6 +52,7 @@ export function CurrencyComboBox() {
 
       setSelectedOption(Currencies.find(c => c.value === data.currency) || null)
     },
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     onError: (e) => {
       toast.error("Something went wrong", {
         id: "update-currency",
